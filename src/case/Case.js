@@ -1,7 +1,7 @@
 import React from "react";
 import MUIDataTable from "mui-datatables";
 import Button from '@mui/material/Button';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -109,13 +109,13 @@ const Case = () => {
   return (
     <>
 <MUIDataTable
-  title={"CASES"}
+  title={"CASES"} 
   data={data}
   columns={columns}
   options={options}
 /> 
 <div style={{ textAlign: 'center', marginTop: '20px'}}>
-        <Button variant="contained"  onClick={handleNextPage} style={{ backgroundColor:"#141963" }}>
+        <Button variant="contained" component={Link} to = "/Fir"  onClick={handleNextPage} style={{ backgroundColor:"#141963" }}>
           Next Page
         </Button>
       </div>

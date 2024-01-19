@@ -3,6 +3,8 @@ import Scheduler from './components/Scheduler/Scheduler';
 import Case from 'case/Case';
 import Form from 'case/Form';
 import Fir from 'case/Fir';
+import Edit from 'case/Edit';
+import Ufir from 'case/Ufir';
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -15,6 +17,10 @@ import Chart from 'newdashboard/Chart';
 import Team from 'task/Team';
 import Tform from 'task/Tform';
 import Work from 'task/Work';
+import Pay from 'pay/Pay';
+import Trans from 'pay/Trans';
+
+
 
 
 
@@ -42,13 +48,17 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<Maindash />} />
                 <Route path="case" element={<Case />} />
+                <Route path="Edit" element={<Edit />} />
                 <Route path="Form" element={<Form />} />
                 <Route path="Fir" element={<Fir />} />
+                <Route path="Ufir" element={<Ufir />}/>
                 <Route path="Chart" element={<Chart />}/>
                 <Route path="Scheduler" element={<Scheduler />}/>
                 <Route path="Work" element={<Work />}/>
                 <Route path="Team" element={<Team />}/>
                 <Route path="Tform" element={<Tform />}/>
+                <Route path="Pay" element={<Pay />}/>
+                <Route path="Trans" element={<Trans/>}/>
                 
 
 

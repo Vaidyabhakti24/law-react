@@ -1,11 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-aimport { Link } from 'react-router-dom';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 
 const Tform = ({ title }) => { 
@@ -24,7 +21,7 @@ const Tform = ({ title }) => {
     >
       <h2>{title}</h2>
      
-      <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}>ADD TASKS</h1>
+      <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}>PAYMENT GATEWAY</h1>
       <div>
         <TextField
           id="outlined-multiline-flexible"
@@ -35,11 +32,7 @@ const Tform = ({ title }) => {
       
       </div>
       <div>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={[ 'DatePicker']}>
-        <DatePicker label="Date" name="startDate" />
-      </DemoContainer>
-    </LocalizationProvider>
+
 
         <TextField
           id="outlined-textarea"

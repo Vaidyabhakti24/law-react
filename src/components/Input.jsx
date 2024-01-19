@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 
 export default function Input() {
   return (
+    
     <Box
       component="form"
       sx={{
@@ -13,6 +14,7 @@ export default function Input() {
       autoComplete="off"
     >
       <div>
+      <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}> DOCUMENT MANAGEMENT</h1>
       <TextField
           required
           id="outlined-required"

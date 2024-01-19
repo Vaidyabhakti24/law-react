@@ -15,7 +15,7 @@ const Fir = ( ) => {
       noValidate
       autoComplete="on"
     >
-      <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}> Add FIR Details</h1>
+      <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}> UPDATE FIR Details</h1>
       <div>
         <TextField  
           id="outlined-multiline-flexible"

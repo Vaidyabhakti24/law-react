@@ -89,7 +89,6 @@ const DropFileInput = () => {
       >
         <div className="drop-file-input__label">
           <img src={uploadImg} alt="" />
-          <p >Drag & Drop your PDF files here</p>
         </div>
         <input type="file" value="" onChange={onFileDrop} accept=".pdf" />
       </div>

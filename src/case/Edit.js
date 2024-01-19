@@ -43,7 +43,7 @@ const Form = ({ title }) => {
     >
       <h2>{title}</h2>
      
-      <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}> Add Client & Case Details</h1>
+      <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}> EDIT CASES</h1>
       <div>
         <TextField
           id="outlined-multiline-flexible"
@@ -216,7 +216,7 @@ const Form = ({ title }) => {
           maxRows={2}
   
         />    
-        <Button  variant="contained"  component={Link} to = "/Case" style={{ backgroundColor:"#141963" ,textAlign:"center",marginTop:"84px" }} >
+        <Button  variant="contained"  component={Link} to = "/Ufir" style={{ backgroundColor:"#141963" ,textAlign:"center",marginTop:"84px" }} >
         Next Page
        </Button>
 

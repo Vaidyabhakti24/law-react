@@ -112,18 +112,18 @@ const Work = () => {
   return (
     <>
 <MUIDataTable
-  title={"CASES"}
+  title={"TASK MANAGEMENT"}
   columns={columns}
   options={options}
 /> 
 <Stack spacing={2} direction="row">
 <Button  variant="contained"  component={Link} to = "/Tform" style={{ backgroundColor:"#141963" ,textAlign:"center",marginTop:"84px" }} >
-        Add Team
+        ADD TASK
 </Button>
 <Button  variant="contained"  component={Link} to = "/Team" style={{ backgroundColor:"#141963" ,textAlign:"center",marginTop:"84px" }} >
-        Add Team Members
+        ADD TEAM MEMBERS
 </Button>
-    </Stack>
+</Stack>
 
 
 

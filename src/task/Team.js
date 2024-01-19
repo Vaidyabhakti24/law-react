@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-
+import Stack from '@mui/material/Stack';
 
 
 const Team = ({ title }) => { 
@@ -20,7 +20,7 @@ const Team = ({ title }) => {
     >
       <h2>{title}</h2>
      
-      <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}> Add Team Members</h1>
+      <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}> ADD TEAM MEMBERS</h1>
       <div>
         <TextField
           id="outlined-multiline-flexible"
@@ -90,14 +90,16 @@ const Team = ({ title }) => {
       </Box>
       <div>
 
- 
-        <Button  variant="contained"  component={Link} to = "/" style={{ backgroundColor:"#e60023" ,marginTop:"24px",display:"flex" }} >
+
+
+       <Stack spacing={4} direction="row">
+        <Button  variant="contained"  component={Link} to = "/work" style={{ backgroundColor:"#e60023" ,marginTop:"24px",textAlign:"center",marginLeft:"78px",width:"32ch" }} >
         Cancel
        </Button>
-       <Button  variant="contained"  component={Link} to = "/" style={{ backgroundColor:"#32de84" ,display:"flex" }} >
+       <Button  variant="contained"  component={Link} to = "/work" style={{ backgroundColor:"#32de84" ,textAlign:"center",marginTop:"24px",marginLeft:"78px",width:"32ch"}} >
         Save
        </Button>
-
+       </Stack>
 
 
       </div>
