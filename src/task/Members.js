@@ -6,17 +6,19 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FileOpenIcon from '@mui/icons-material/FileOpen';
 
+
+
 const columns = [
   {
     name: "no",
-    label: "no",
+    label: "NO",
     options: {
      filter: true,
      sort: true,
     }
    },
  {
-  name: "name",
+  name: "first name",
   label: "FIRST NAME",
   options: {
    filter: true,
@@ -24,7 +26,7 @@ const columns = [
   }
  },
  {
-  name: "description",
+  name: "last name",
   label: "LAST NAME",
   options: {
    filter: true,
@@ -32,7 +34,7 @@ const columns = [
   }
  },
  {
-  name: "respondant",
+  name: "email",
   label: "EMAIL",
   options: {
    filter: true,
@@ -40,15 +42,15 @@ const columns = [
   }
  },
  {
-  name: "date",
-  label: "MOBILE NUMBERS",
+  name: "mobile number",
+  label: "MOBILE NUMBER",
   options: {
    filter: true,
    sort: false,
   }
  },
  {
-  name: "comments",
+  name: "address",
   label: "ADDRESS",
   options: {
    filter: true,
@@ -56,8 +58,8 @@ const columns = [
   }
  },
  {
-  name: 'Status',
-  label: "ROLE",
+  name: 'date',
+  label: "DATE",
   options: {
    filter: true,
    sort: false,
@@ -90,24 +92,19 @@ const columns = [
  
 ];
 
-const data = [
- { no:"1",name: "Pooja Shetty", description: "Test Corp", respondant: "adv.abc", date: "3/1/202",comments:"hiring is on 3/1/2024",Status:" Inactive" },
- { no:"2",name: "Ram Sharma", description: "Test Desc", respondant: "adv.pqr", date: "27/7/2024",comments:"hiring is on 27/7/2024",Status:"Open " },
- 
-];
+
 
 const options = {
   filterType: 'checkbox',
 };
 
-const Case = () => {
+const Work = () => {
 
-     
+  
   return (
     <>
 <MUIDataTable
-  title={"TEAM MEMBERS"} 
-  data={data}
+  title={"TEAM MEMBERS"}
   columns={columns}
   options={options}
 /> 
@@ -115,4 +112,4 @@ const Case = () => {
     </>
   );
 };
-  export default Case;
+  export default Work;

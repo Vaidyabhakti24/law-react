@@ -1,25 +1,12 @@
 import React, { Component} from 'react';
 import 'dhtmlx-scheduler';
 import 'dhtmlx-scheduler/codebase/dhtmlxscheduler_material.css';
+import Sform from './Sform';
+
 
 const scheduler = window.scheduler; 
 
 export default class Scheduler extends Component {
-
- /* const [age, setAge] = useState('');
-  const [open, setOpen] = React.useState(false);
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };*/
 
 
     initSchedulerEvents() {
@@ -85,18 +72,23 @@ export default class Scheduler extends Component {
     }
 
     render() {
-     
-
-  
         
+       
         const { timeFormatState } = this.props;
         this.setHoursScaleFormat(timeFormatState);
         return (
+            <>
             <div
                 
                 ref={ (input) => { this.schedulerContainer = input } }
                 style={ { width: '100%', height: '600px' } }
             >s</div>
+         
+
+            <Sform />
+            </>
+
         );
+    
     }
 }

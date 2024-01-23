@@ -23,12 +23,8 @@ import Trans from 'pay/Trans';
 import SignIn from 'sign-in/SignIn';
 import SignUp from 'sign-up/SignUp';
 import SignInSide from 'sign-in-side/SignInSide';
-import Chart from 'newdashboard/Chart';
-import Dashboard from 'newdashboard/Dashboard';
-import Deposite from 'newdashboard/Deposite';
-import Orders from 'newdashboard/Orders';
-
-
+import Chart from 'dash/Chart';
+import Title from 'newdashboard/Title';
 
 
 export default function App() {
@@ -69,11 +65,12 @@ export default function App() {
                 <Route path="SignInSide" element={<SignInSide/>}/>
                 <Route path="SignUp" element={<SignUp/>}/>
                 <Route path="Chart" element={<Chart/>}/>
-                <Route path="Dashboard" element={<Dashboard/>}/>
-                <Route path="Deposite" element={<Deposite/>}/>
-                <Route path="Orders" element={<Orders/>}/>
+                <Route path="useChart" element={<useChart/>}/>
+                <Route path="index" element={<index/>}/>
+                <Route path="Title" element={<Title/>}/>
                 <Route path="Documents" element={<Documents/>}/>
                 <Route path="Members" element={<Members/>}/>
+               
               
       
 

@@ -20,7 +20,7 @@ export const mainListItems = (
       <ListItemText primary="MAIN MENU" sx= {{ color: 'blue' }}/>
     </ListItemIcon>
     </ListItemButton>
-    <ListItemButton component={Link} to = "/Dashboard" >
+    <ListItemButton component={Link} to = "/Chart" >
       
       <ListItemIcon>
         <DashboardIcon sx={{ color: '#fff' }} />
