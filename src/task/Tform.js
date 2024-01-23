@@ -1,12 +1,13 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-aimport { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 const Tform = ({ title }) => { 
 
@@ -36,11 +37,10 @@ const Tform = ({ title }) => {
       </div>
       <div>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={[ 'DatePicker']}>
-        <DatePicker label="Date" name="startDate" />
+      <DemoContainer components={['DatePicker']}>
+        <DatePicker label="Date" />
       </DemoContainer>
     </LocalizationProvider>
-
         <TextField
           id="outlined-textarea"
           label="Deadline"

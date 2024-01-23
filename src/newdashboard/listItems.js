@@ -20,18 +20,18 @@ export const mainListItems = (
       <ListItemText primary="MAIN MENU" sx= {{ color: 'blue' }}/>
     </ListItemIcon>
     </ListItemButton>
-    <ListItemButton component={Link} to = "/form" >
+    <ListItemButton component={Link} to = "/Dashboard" >
       
       <ListItemIcon>
         <DashboardIcon sx={{ color: '#fff' }} />
       </ListItemIcon>
-      <ListItemText primary="Cases"  />
+      <ListItemText primary="Dashboard"  />
     </ListItemButton  >
-    <ListItemButton component={Link} to = "/">
+    <ListItemButton component={Link} to = "/form">
       <ListItemIcon>
       <FolderIcon sx={{ color: '#fff' }} />
       </ListItemIcon>
-      <ListItemText primary="Documents"  />
+      <ListItemText primary="Cases"  />
     </ListItemButton> 
     </React.Fragment>
 );
@@ -55,7 +55,7 @@ export const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary="Task" />
     </ListItemButton>
-    <ListItemButton component={Link} to = "/">
+    <ListItemButton component={Link} to = "/Pay">
       <ListItemIcon>
         <PeopleIcon sx={{ color: '#fff' }} />
       </ListItemIcon>
@@ -66,18 +66,7 @@ export const secondaryListItems = (
 
 export const thirdListItems = (
   <React.Fragment >
-    <ListItemButton>
-      <ListItemIcon>
-      <ListItemText primary="General" sx={{ color: 'blue' }}  />
-    </ListItemIcon>
-    </ListItemButton>
-    <ListItemButton component={Link} to = "/">
-      <ListItemIcon>
-        <FolderIcon sx={{ color: '#fff' }}/>
-      </ListItemIcon>
-      <ListItemText primary="File & Folder" />
-    </ListItemButton>
-    <ListItemButton component={Link} to = "/ ">
+    <ListItemButton component={Link} to = "/SignInSide ">
       <ListItemIcon>
         <SettingsIcon sx={{ color: '#fff' }} />
       </ListItemIcon >

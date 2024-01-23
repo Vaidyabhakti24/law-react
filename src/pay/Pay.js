@@ -14,7 +14,7 @@ const Tform = ({ title }) => {
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '77ch'},
+        '& .MuiTextField-root': { m: 1, width: '39ch'},
       }}
       noValidate
       autoComplete="on"
@@ -23,9 +23,17 @@ const Tform = ({ title }) => {
      
       <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}>PAYMENT GATEWAY</h1>
       <div>
+
+      <h5  style={{ fontFamily: 'Sans-serif', color: 'blue', fontSize: '18px' }}>Personal Details</h5>
         <TextField
           id="outlined-multiline-flexible"
-          label="Subject"
+          label="First Name"
+          multiline
+          maxRows={2}
+        />  
+          <TextField
+          id="outlined-multiline-flexible"
+          label="Last Name"
           multiline
           maxRows={2}
         />  
@@ -36,35 +44,29 @@ const Tform = ({ title }) => {
 
         <TextField
           id="outlined-textarea"
-          label="Deadline"
+          label="Email"
           multiline
           />
+      <TextField
+          id="outlined-multiline-flexible"
+          label="Phone number"
+          multiline
+          maxRows={2}
+        />
+   
+      </div>
 
-      </div>
+      <h5  style={{ fontFamily: 'Sans-serif', color: 'blue', fontSize: '18px' }}>Payment Details</h5>
       <div>
       <TextField
           id="outlined-multiline-flexible"
-          label="Select Status"
+          label="Card holder name"
           multiline
           maxRows={2}
         />
         <TextField
           id="outlined-textarea"
-          label="Priority"
-          multiline
-        />
-    
-      </div>
-      <div>
-      <TextField
-          id="outlined-multiline-flexible"
-          label="Assign To"
-          multiline
-          maxRows={2}
-        />
-        <TextField
-          id="outlined-textarea"
-          label="Related To"
+          label="Card number"
           multiline
         />
       </div>
@@ -73,35 +75,26 @@ const Tform = ({ title }) => {
       <div>
       <TextField
           id="outlined-multiline-flexible"
-          label="Case Person Name"
+          label="CVV"
           multiline
           maxRows={2}
         />
         <TextField
           id="outlined-textarea"
-          label="Case Number"
+          label="Expiration Date"
           multiline
         />
        
-      </div>
-      <div >
-      <TextField
-          id="outlined-multiline-flexible"
-          label="Description"
-          multiline
-          maxRows={2}
-        />
-
       </div>
   
       <div>
 
       <Stack spacing={2} direction="row">
-        <Button  variant="contained"  component={Link} to = "/Team" style={{ backgroundColor:"#e60023" ,marginTop:"24px",textAlign:"center",marginLeft:"58px",width:"32ch" }} >
+        <Button  variant="outlined" component={Link} to = "/work" style={{ marginTop:"24px",textAlign:"center",marginLeft:"58px",width:"32ch" }} >
         Cancel
        </Button>
-       <Button  variant="contained"  component={Link} to = "/Work" style={{ backgroundColor:"#32de84" ,textAlign:"center",marginTop:"24px",marginLeft:"58px",width:"32ch"}} >
-        Save
+       <Button  variant="contained"  component={Link} to = "/Trans" style={{ color:"primary" ,textAlign:"center",marginTop:"24px",marginLeft:"58px",width:"32ch"}} >
+        Complete Transaction
        </Button>
        </Stack>
 

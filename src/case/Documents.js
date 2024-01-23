@@ -10,7 +10,7 @@ import FileOpenIcon from '@mui/icons-material/FileOpen';
 const columns = [
   {
     name: "no",
-    label: "CASE",
+    label: "DOC.NO",
     options: {
      filter: true,
      sort: true,
@@ -18,7 +18,7 @@ const columns = [
    },
  {
   name: "name",
-  label: "CLIENT NAME",
+  label: "Case DOCUMENT",
   options: {
    filter: true,
    sort: true,
@@ -26,43 +26,7 @@ const columns = [
  },
  {
   name: "description",
-  label: "CASE DESCRIPTION",
-  options: {
-   filter: true,
-   sort: false,
-  }
- },
- {
-  name: "respondant",
-  label: "RESPONDANT NAME",
-  options: {
-   filter: true,
-   sort: false,
-  }
- },
- {
-  name: "date",
-  label: "HEARING DATE",
-  options: {
-   filter: true,
-   sort: false,
-  }
- },
- {
-  name: "comments",
-  label: "COMMENTS",
-  options: {
-   filter: true,
-   sort: false,
-  }
- },
- {
-  name: 'Status',
-  label: "CASE STATUS",
-  options: {
-   filter: true,
-   sort: false,
-  }
+  label: "TAG DOCUMENT",
  },
  {
   name: 'actions',
@@ -109,21 +73,15 @@ const Case = () => {
   return (
     <>
 <MUIDataTable
-  title={"CASES"} 
+  title={"DOCUMENTS"} 
   data={data}
   columns={columns}
   options={options}
 /> 
 <div style={{ textAlign: 'center', marginTop: '20px'}}>
-
-        <Stack spacing={2} direction="row">
-        <Button variant="contained" component={Link} to = "/Case"  onClick={handleNextPage} style={{ backgroundColor:"#141963" }}>
-          ALL CASES
+        <Button variant="contained" component={Link} to = "/Fir"  onClick={handleNextPage} style={{ backgroundColor:"#141963" }}>
+          Next Page
         </Button>
-        <Button variant="contained" component={Link} to = "/documents"  onClick={handleNextPage} style={{ backgroundColor:"#141963" }}>
-          ALL DOCUMENTS
-        </Button>
-        </Stack>
       </div>
     </>
   );

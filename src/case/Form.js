@@ -36,7 +36,7 @@ const Form = ({ title }) => {
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '39ch'},
+        '& .MuiTextField-root': { m: 1, width: '34ch'},
       }}
       noValidate
       autoComplete="on"
@@ -205,24 +205,21 @@ const Form = ({ title }) => {
           multiline
           maxRows={2}
         />
-
-      </div>
-      <div>
       <TextField  
     
-          id="outlined-multiline-flexible"
-          label="Add Case Description"
-          multiline
-          maxRows={2}
-  
-        />    
-        <Button  variant="contained"  component={Link} to = "/Case" style={{ backgroundColor:"#141963" ,textAlign:"center",marginTop:"84px" }} >
+    id="outlined-multiline-flexible"
+    label="Add Case Description"
+    multiline
+    maxRows={2}
+
+  /> 
+    <div>
+        <Button  variant="contained"  component={Link} to = "/fir" style={{ backgroundColor:"#141963" ,textAlign:"center",marginTop:"24px" }} >
         Next Page
        </Button>
-
-
-
+    </div>
       </div>
+    
     </Box>
     
   );

@@ -1,108 +1,78 @@
 import * as React from 'react';
-import dayjs from 'dayjs';
-import Badge from '@mui/material/Badge';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { PickersDay } from '@mui/x-date-pickers/PickersDay';
-import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
-import { DayCalendarSkeleton } from '@mui/x-date-pickers/DayCalendarSkeleton';
+import { useTheme } from '@mui/material/styles';
+import { LineChart, axisClasses } from '@mui/x-charts';
 
-function getRandomNumber(min, max) {
-  return Math.round(Math.random() * (max - min) + min);
+import Title from './Title';
+
+// Generate Sales Data
+function createData(time, amount) {
+  return { time, amount: amount ?? null };
 }
 
-function fakeFetch(date, { signal }) {
-  return new Promise((resolve, reject) => {
-    const timeout = setTimeout(() => {
-      const daysInMonth = date.daysInMonth();
-      const daysToHighlight = [1, 2, 3].map(() => getRandomNumber(1, daysInMonth));
+const data = [
+  createData('00:00', 0),
+  createData('03:00', 300),
+  createData('06:00', 600),
+  createData('09:00', 800),
+  createData('12:00', 1500),
+  createData('15:00', 2000),
+  createData('18:00', 2400),
+  createData('21:00', 2400),
+  createData('24:00'),
+];
 
-      resolve({ daysToHighlight });
-    }, 500);
-
-    signal.onabort = () => {
-      clearTimeout(timeout);
-      reject(new DOMException('aborted', 'AbortError'));
-    };
-  });
-}
-
-const initialValue = dayjs('2024-02-9');
-
-function ServerDay(props) {
-  const { highlightedDays = [], day, outsideCurrentMonth, ...other } = props;
-
-  const isSelected =
-    !props.outsideCurrentMonth && highlightedDays.indexOf(props.day.date()) >= 0;
+export default function Chart() {
+  const theme = useTheme();
 
   return (
-    <Badge
-      key={props.day.toString()}
-      overlap="circular"
-      badgeContent={isSelected ? '🌚' : undefined}
-    >
-      <PickersDay {...other} outsideCurrentMonth={outsideCurrentMonth} day={day} />
-    </Badge>
-  );
-}
-
-export default function DateCalendarServerRequest() {
-  const requestAbortController = React.useRef(null);
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [highlightedDays, setHighlightedDays] = React.useState([1, 2, 15]);
-
-  const fetchHighlightedDays = (date) => {
-    const controller = new AbortController();
-    fakeFetch(date, {
-      signal: controller.signal,
-    })
-      .then(({ daysToHighlight }) => {
-        setHighlightedDays(daysToHighlight);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        
-        if (error.name !== 'AbortError') {
-          throw error;
-        }
-      });
-
-    requestAbortController.current = controller;
-  };
-
-  React.useEffect(() => {
-    fetchHighlightedDays(initialValue);
-    // abort request on unmount
-    return () => requestAbortController.current?.abort();
-  }, []);
-
-  const handleMonthChange = (date) => {
-    if (requestAbortController.current) {
-
-      requestAbortController.current.abort();
-    }
-
-    setIsLoading(true);
-    setHighlightedDays([]);
-    fetchHighlightedDays(date);
-  };
-
-  return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DateCalendar
-        defaultValue={initialValue}
-        loading={isLoading}
-        onMonthChange={handleMonthChange}
-        renderLoading={() => <DayCalendarSkeleton />}
-        slots={{
-          day: ServerDay,
-        }}
-        slotProps={{
-          day: {
-            highlightedDays,
-          },
-        }}
-      />
-    </LocalizationProvider>
+    <React.Fragment>
+      <Title>Today</Title>
+      <div style={{ width: '100%', flexGrow: 1, overflow: 'hidden',height:'20' }}>
+        <LineChart
+          dataset={data}
+          margin={{
+            top: 16,
+            right: 20,
+            left: 70,
+            bottom: 30,
+            
+          }}
+          xAxis={[
+            {
+              scaleType: 'point',
+              dataKey: 'time',
+              tickNumber: 2,
+              tickLabelStyle: theme.typography.body2,
+            },
+          ]}
+          yAxis={[
+            {
+              label: 'Sales ($)',
+              labelStyle: {
+                ...theme.typography.body1,
+                fill: theme.palette.text.primary,
+              },
+              tickLabelStyle: theme.typography.body2,
+              max: 2500,
+              tickNumber: 3,
+            },
+          ]}
+          series={[
+            {
+              dataKey: 'amount',
+              showMark: false,
+              color: theme.palette.primary.light,
+            },
+          ]}
+          sx={{
+            [`.${axisClasses.root} line`]: { stroke: theme.palette.text.secondary },
+            [`.${axisClasses.root} text`]: { fill: theme.palette.text.secondary },
+            [`& .${axisClasses.left} .${axisClasses.label}`]: {
+              transform: 'translateX(-25px)',
+            },
+          }}
+        />
+      </div>
+    </React.Fragment>
   );
 }

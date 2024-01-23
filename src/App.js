@@ -5,6 +5,7 @@ import Form from 'case/Form';
 import Fir from 'case/Fir';
 import Edit from 'case/Edit';
 import Ufir from 'case/Ufir';
+import Documents from 'case/Documents';
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -13,13 +14,19 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Maindash from 'pages/Maindash';
 import Header from 'newdashboard/Header';
-import Chart from 'newdashboard/Chart';
 import Team from 'task/Team';
 import Tform from 'task/Tform';
 import Work from 'task/Work';
+import Members from 'task/Members';
 import Pay from 'pay/Pay';
 import Trans from 'pay/Trans';
-
+import SignIn from 'sign-in/SignIn';
+import SignUp from 'sign-up/SignUp';
+import SignInSide from 'sign-in-side/SignInSide';
+import Chart from 'newdashboard/Chart';
+import Dashboard from 'newdashboard/Dashboard';
+import Deposite from 'newdashboard/Deposite';
+import Orders from 'newdashboard/Orders';
 
 
 
@@ -52,14 +59,23 @@ export default function App() {
                 <Route path="Form" element={<Form />} />
                 <Route path="Fir" element={<Fir />} />
                 <Route path="Ufir" element={<Ufir />}/>
-                <Route path="Chart" element={<Chart />}/>
                 <Route path="Scheduler" element={<Scheduler />}/>
                 <Route path="Work" element={<Work />}/>
                 <Route path="Team" element={<Team />}/>
                 <Route path="Tform" element={<Tform />}/>
                 <Route path="Pay" element={<Pay />}/>
                 <Route path="Trans" element={<Trans/>}/>
-                
+                <Route path="SignIn" element={<SignIn/>}/>
+                <Route path="SignInSide" element={<SignInSide/>}/>
+                <Route path="SignUp" element={<SignUp/>}/>
+                <Route path="Chart" element={<Chart/>}/>
+                <Route path="Dashboard" element={<Dashboard/>}/>
+                <Route path="Deposite" element={<Deposite/>}/>
+                <Route path="Orders" element={<Orders/>}/>
+                <Route path="Documents" element={<Documents/>}/>
+                <Route path="Members" element={<Members/>}/>
+              
+      
 
 
               </Routes>

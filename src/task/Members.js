@@ -1,7 +1,6 @@
 import React from "react";
 import MUIDataTable from "mui-datatables";
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -10,7 +9,7 @@ import FileOpenIcon from '@mui/icons-material/FileOpen';
 const columns = [
   {
     name: "no",
-    label: "CASE",
+    label: "no",
     options: {
      filter: true,
      sort: true,
@@ -18,7 +17,7 @@ const columns = [
    },
  {
   name: "name",
-  label: "CLIENT NAME",
+  label: "FIRST NAME",
   options: {
    filter: true,
    sort: true,
@@ -26,7 +25,7 @@ const columns = [
  },
  {
   name: "description",
-  label: "CASE DESCRIPTION",
+  label: "LAST NAME",
   options: {
    filter: true,
    sort: false,
@@ -34,7 +33,7 @@ const columns = [
  },
  {
   name: "respondant",
-  label: "RESPONDANT NAME",
+  label: "EMAIL",
   options: {
    filter: true,
    sort: false,
@@ -42,7 +41,7 @@ const columns = [
  },
  {
   name: "date",
-  label: "HEARING DATE",
+  label: "MOBILE NUMBERS",
   options: {
    filter: true,
    sort: false,
@@ -50,7 +49,7 @@ const columns = [
  },
  {
   name: "comments",
-  label: "COMMENTS",
+  label: "ADDRESS",
   options: {
    filter: true,
    sort: false,
@@ -58,7 +57,7 @@ const columns = [
  },
  {
   name: 'Status',
-  label: "CASE STATUS",
+  label: "ROLE",
   options: {
    filter: true,
    sort: false,
@@ -103,28 +102,16 @@ const options = {
 
 const Case = () => {
 
-  const handleNextPage = () => {
-    history.push('/fir'); // Replace '/next-page' with your desired route
-  };
+     
   return (
     <>
 <MUIDataTable
-  title={"CASES"} 
+  title={"TEAM MEMBERS"} 
   data={data}
   columns={columns}
   options={options}
 /> 
-<div style={{ textAlign: 'center', marginTop: '20px'}}>
 
-        <Stack spacing={2} direction="row">
-        <Button variant="contained" component={Link} to = "/Case"  onClick={handleNextPage} style={{ backgroundColor:"#141963" }}>
-          ALL CASES
-        </Button>
-        <Button variant="contained" component={Link} to = "/documents"  onClick={handleNextPage} style={{ backgroundColor:"#141963" }}>
-          ALL DOCUMENTS
-        </Button>
-        </Stack>
-      </div>
     </>
   );
 };
