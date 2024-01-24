@@ -83,6 +83,8 @@ export default class Scheduler extends Component {
                 ref={ (input) => { this.schedulerContainer = input } }
                 style={ { width: '100%', height: '600px' } }
             >s</div>
+            <div>
+            </div>
          
 
             <Sform />
