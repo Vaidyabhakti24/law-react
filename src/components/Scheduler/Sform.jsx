@@ -50,7 +50,7 @@ export default function Sform() {
 </div>
 </Stack>
     </FormControl>
-    <div marginTop="10px">
+    <div >
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={['DatePicker']}>
         <DatePicker label="Select Date" />

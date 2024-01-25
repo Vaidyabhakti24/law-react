@@ -12,7 +12,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Maindash from 'pages/Maindash';
 import Header from 'newdashboard/Header';
 import Team from 'task/Team';
 import Tform from 'task/Tform';
@@ -23,8 +22,10 @@ import Trans from 'pay/Trans';
 import SignIn from 'sign-in/SignIn';
 import SignUp from 'sign-up/SignUp';
 import SignInSide from 'sign-in-side/SignInSide';
-import Chart from 'dash/Chart';
 import Title from 'newdashboard/Title';
+import Dashboard from 'dashboard/Dashboard';
+
+
 
 
 export default function App() {
@@ -49,7 +50,7 @@ export default function App() {
             <Toolbar />
             <Container maxWidth="lg" sx={{ mt: 4, mb: 8 }}>
               <Routes>
-                <Route path="/" element={<Maindash />} />
+                <Route path="/" element={<Dashboard />} />
                 <Route path="case" element={<Case />} />
                 <Route path="Edit" element={<Edit />} />
                 <Route path="Form" element={<Form />} />
@@ -64,17 +65,11 @@ export default function App() {
                 <Route path="SignIn" element={<SignIn/>}/>
                 <Route path="SignInSide" element={<SignInSide/>}/>
                 <Route path="SignUp" element={<SignUp/>}/>
-                <Route path="Chart" element={<Chart/>}/>
-                <Route path="useChart" element={<useChart/>}/>
-                <Route path="index" element={<index/>}/>
                 <Route path="Title" element={<Title/>}/>
                 <Route path="Documents" element={<Documents/>}/>
                 <Route path="Members" element={<Members/>}/>
                
-              
-      
-
-
+            
               </Routes>
             
             </Container>

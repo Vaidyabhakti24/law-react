@@ -1,7 +1,5 @@
 import React from "react";
 import MUIDataTable from "mui-datatables";
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
 
 
 
@@ -46,19 +44,7 @@ const columns = [
   options: {
     filter: false,
     sort: false,
-    customBodyRenderLite: () => (
-
-        <Stack direction="row" spacing={0.5} >
-        <Button color="primary">Inprogress</Button>
-        <Button variant="contained" color="success">
-         Completed
-        </Button>
-        <Button variant="outlined" color="error">
-          Cancelled
-        </Button>
-      </Stack>
-  
-    )
+   
   },
   
  },
