@@ -10,6 +10,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems, secondaryListItems,thirdListItems } from './listItems';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -104,7 +105,7 @@ export default function Header() {
               
             </Typography>
           </Toolbar>
-          
+        <AccountCircleIcon />  
         </AppBar>
             <Drawer variant="permanent" open={open}>
             <Toolbar
