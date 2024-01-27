@@ -20,10 +20,10 @@ import Members from 'task/Members';
 import Pay from 'pay/Pay';
 import Trans from 'pay/Trans';
 import SignIn from 'sign-in/SignIn';
-import SignUp from 'sign-up/SignUp';
+import SignUp from 'sign-in-side/SignUp';
 import SignInSide from 'sign-in-side/SignInSide';
 import Title from 'newdashboard/Title';
-import Dashboard from 'dashboard/Dashboard';
+import Maindash from 'pages/Maindash';
 
 
 
@@ -50,7 +50,7 @@ export default function App() {
             <Toolbar />
             <Container maxWidth="lg" sx={{ mt: 4, mb: 8 }}>
               <Routes>
-                <Route path="/" element={<Dashboard />} />
+                <Route path="/" element={<Maindash />} />
                 <Route path="case" element={<Case />} />
                 <Route path="Edit" element={<Edit />} />
                 <Route path="Form" element={<Form />} />
