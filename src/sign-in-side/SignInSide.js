@@ -12,7 +12,6 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import img from './img.jpg';
 
 const defaultTheme = createTheme();
 
@@ -44,7 +43,6 @@ export default function SignInSide() {
             backgroundPosition: 'center',
           }}
         />
-        <img src={img} alt="img" />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{

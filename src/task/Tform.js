@@ -2,10 +2,10 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+// import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
@@ -28,14 +28,14 @@ const Tform = ({ title }) => {
       <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}>ADD TASKS</h1>
       <div>
         <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="Subject"
-          multiline
+           
           maxRows={2}
         />  
       
       </div>
-      <div>
+      {/* <div>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={['DatePicker']}>
         <DatePicker label="Date" />
@@ -44,58 +44,58 @@ const Tform = ({ title }) => {
         <TextField
           id="outlined-textarea"
           label="Deadline"
-          multiline
+           
           />
 
-      </div>
+      </div> */}
       <div>
       <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="Select Status"
-          multiline
+           
           maxRows={2}
         />
         <TextField
           id="outlined-textarea"
           label="Priority"
-          multiline
+           
         />
     
       </div>
       <div>
       <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="Assign To"
-          multiline
+           
           maxRows={2}
         />
         <TextField
           id="outlined-textarea"
           label="Related To"
-          multiline
+           
         />
       </div>
      
       
       <div>
       <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="Case Person Name"
-          multiline
+           
           maxRows={2}
         />
         <TextField
           id="outlined-textarea"
           label="Case Number"
-          multiline
+           
         />
        
       </div>
       <div >
       <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="Description"
-          multiline
+           
           maxRows={2}
         />
 
