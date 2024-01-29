@@ -23,42 +23,42 @@ const Team = ({ title }) => {
       <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}> ADD TEAM MEMBERS</h1>
       <div>
         <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="First Name"
-          multiline
+           
           maxRows={2}
         />  
         <TextField
           id="outlined-textarea"
           label="Last Name"
-          multiline
+           
         />
       
       </div>
       <div>
       <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="Email"
-          multiline
+           
           maxRows={2}
         />
         <TextField
           id="outlined-textarea"
           label="Mobile Number"
-          multiline
+           
           />  
       </div>
       <div>
       <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="Password"
-          multiline
+           
           maxRows={2}
         />
       <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="Confirm Password"
-          multiline
+           
           maxRows={2}
         />
     
@@ -75,15 +75,15 @@ const Team = ({ title }) => {
       <TextField
           id="outlined-textarea"
           label="Address"
-          multiline
+           
         />
       </div>   
       <div>
   
       <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="Select Role"
-          multiline
+           
           maxRows={2}
         />
       </div>

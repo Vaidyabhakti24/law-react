@@ -26,15 +26,15 @@ const Tform = ({ title }) => {
 
       <h5  style={{ fontFamily: 'Sans-serif', color: 'blue', fontSize: '18px' }}>Personal Details</h5>
         <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="First Name"
-          multiline
+           
           maxRows={2}
         />  
           <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="Last Name"
-          multiline
+           
           maxRows={2}
         />  
       
@@ -44,12 +44,12 @@ const Tform = ({ title }) => {
         <TextField
           id="outlined-textarea"
           label="Email"
-          multiline
+           
           />
       <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="Phone number"
-          multiline
+           
           maxRows={2}
         />
    
@@ -58,30 +58,30 @@ const Tform = ({ title }) => {
       <h5  style={{ fontFamily: 'Sans-serif', color: 'blue', fontSize: '18px' }}>Payment Details</h5>
       <div>
       <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="Card holder name"
-          multiline
+           
           maxRows={2}
         />
         <TextField
           id="outlined-textarea"
           label="Card number"
-          multiline
+           
         />
       </div>
      
       
       <div>
       <TextField
-          id="outlined-multiline-flexible"
+          id="outlined- -flexible"
           label="CVV"
-          multiline
+           
           maxRows={2}
         />
         <TextField
           id="outlined-textarea"
           label="Expiration Date"
-          multiline
+           
         />
        
       </div>
