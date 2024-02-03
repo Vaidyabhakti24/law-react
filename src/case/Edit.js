@@ -1,233 +1,333 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
+import Cookies from 'universal-cookie';
+import { useLocation } from 'react-router-dom';
+// import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { Link } from 'react-router-dom';
 
+const cookies = new Cookies();
 
-const Form = ({ title }) => { 
+const Form = ({ title }) => {
+  const location = useLocation();
+  const { _id } = location.state;
 
-  const [state, setState] = React.useState({
-    Closed: true,
-    FIR: false,
-    Pending: false,
-    Low: true,
-    High: false,
-    Medium: false,
+  const [formData, setFormData] = useState({
+    clientName: '',
+    caseDescription: '',
+    respondentName: '',
+    respondentSeniorAdvocateName: '',
+    respondentJuniorAdvocateOneName: '',
+    respondentJuniorAdvocateTwoName: '',
+    comments: '',
+    caseType: '',
+    caseSubType: '',
+    actNumber: '',
+    filingNumber: '',
+    filingDate: '',
+    caseStage: {
+      CLOSED: true,
+      FIR: false,
+      PENDING: false,
+    },
+    caseSeverity: {
+      LOW: true,
+      HIGH: false,
+      MEDIUM: false,
+    },
+    firstHearingDate: '',
+    nextHearingDate: '',
+    clientContactNumber: '',
+    respondentContactNumber: '',
+    fileList: [],
+    policeStation: '',
+    FIRnumber: '',
+    FIRDate: '',
+    courtNumber: '',
+    caseNumber: '',
+    courtType: '',
+    judgePost: '',
+    judgeName: '',
+    caseStatus: '',
   });
 
+  useEffect(() => {
+    fetch(`http://127.0.0.1:8000/api/v1/case/${_id}`, {
+      method: 'GET',
+      headers: {
+        'token': cookies.get('token'),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        // Prefill the form data with fetched data
+        setFormData({
+          ...formData,
+          ...data,
+          caseStage: { ...formData.caseStage, ...data.caseStage },
+          caseSeverity: { ...formData.caseSeverity, ...data.caseSeverity },
+        });
+      });
+  }, []);
+
   const handleChange = (event) => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.checked,
-    });
+    const { name, value, type, checked } = event.target;
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
   };
 
-  const { Closed, FIR, Pending, Low,High,Medium } = state;
-  
-  
+  // const handleDateChange = (name, date) => {
+  //   setFormData((prevFormData) => ({
+  //     ...prevFormData,
+  //     [name]: date,
+  //   }));
+  // };
+
+  const handleSubmit = () => {
+    // Handle form submission if needed
+    // You can access the form data from the formData state
+    console.log(formData);
+  };
+
   return (
-   
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '39ch'},
+        '& .MuiTextField-root': { m: 1, width: '34ch' },
       }}
       noValidate
       autoComplete="on"
     >
       <h2>{title}</h2>
-     
-      <h1  style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}> EDIT CASES</h1>
+
+      <h1 style={{ fontFamily: 'Sans-serif', color: 'black', fontSize: '24px' }}>
+        Add Client & Case Details
+      </h1>
+
       <div>
         <TextField
-          id="outlined-multiline-flexible"
+          id="clientName"
           label="Client Full Name"
-          multiline
+          value={formData.clientName || ''}
+          onChange={handleChange}
+          name="clientName"
           maxRows={2}
-        />  
-        <FormControlLabel control={<Checkbox  />} label="Petitionar" />
-        <FormControlLabel control={<Checkbox/>} label="Respondant" />
-        <TextField
-          id="outlined-textarea"
-          label="Respondant Full Name"
-          multiline
         />
-      
+
+        <TextField
+          id="clientContactNumber"
+          label="Client Contact Number"
+          value={formData.clientContactNumber || ''}
+          onChange={handleChange}
+          name="clientContactNumber"
+        />
+        <TextField
+          id="respondentName"
+          label="Respondent Full Name"
+          value={formData.respondentName || ''}
+          onChange={handleChange}
+          name="respondentName"
+        />
       </div>
       <div>
-      <TextField
-          id="outlined-multiline-flexible"
-          label="Respondant Senior Advocate Name"
-          multiline
-          maxRows={2}
+        <TextField
+          id="respondentContactNumber"
+          label="Respondent Contact Number"
+          value={formData.respondentContactNumber || ''}
+          onChange={handleChange}
+          name="respondentContactNumber"
+        />
+
+        <TextField
+          id="respondentSeniorAdvocateName"
+          label="Respondent Senior Advocate Name"
+          value={formData.respondentSeniorAdvocateName || ''}
+          onChange={handleChange}
+          name="respondentSeniorAdvocateName"
         />
         <TextField
-          id="outlined-textarea"
-          label="Respondant Junior Advocate 1"
-          multiline
-          />
-        <TextField
-          id="outlined-multiline-flexible"
-          label="Respondant Junior Advocate 2"
-          multiline
-          maxRows={2}
+          id="respondentJuniorAdvocateOneName"
+          label="Respondent Junior Advocate 1"
+          value={formData.respondentJuniorAdvocateOneName || ''}
+          onChange={handleChange}
+          name="respondentJuniorAdvocateOneName"
         />
-       
       </div>
       <div>
-      <TextField
-          id="outlined-multiline-flexible"
-          label="Case Number"
-          multiline
-          maxRows={2}
-        />
         <TextField
-          id="outlined-textarea"
+          id="respondentJuniorAdvocateTwoName"
+          label="Respondent Junior Advocate 2"
+          value={formData.respondentJuniorAdvocateTwoName || ''}
+          onChange={handleChange}
+          name="respondentJuniorAdvocateTwoName"
+        />
+
+        <TextField
+          id="caseType"
           label="Case Type"
-          multiline
+          value={formData.caseType || ''}
+          onChange={handleChange}
+          name="caseType"
         />
         <TextField
-          id="outlined-multiline-flexible"
+          id="caseSubType"
           label="Case Subtype"
-          multiline
+          value={formData.caseSubType || ''}
+          onChange={handleChange}
+          name="caseSubType"
           maxRows={2}
         />
-    
       </div>
+
       <div>
-      <TextField
-          id="outlined-multiline-flexible"
+        <TextField
+          id="actNumber"
           label="Act Number"
-          multiline
+          value={formData.actNumber || ''}
+          onChange={handleChange}
+          name="actNumber"
           maxRows={2}
         />
         <TextField
-          id="outlined-textarea"
+          id="filingNumber"
           label="Filing Number"
-          multiline
+          value={formData.filingNumber || ''}
+          onChange={handleChange}
+          name="filingNumber"
         />
-        <TextField
-          id="outlined-multiline-flexible"
-          label="Filing date"
-          multiline
-          maxRows={2}
-        />
+        {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DemoContainer components={['DatePicker']}>
+            <DatePicker
+              label="Filing Date"
+              name="filingDate"
+              value={formData.filingDate}
+              onChange={(date) => handleDateChange('filingDate', date)}
+            />
+          </DemoContainer>
+        </LocalizationProvider> */}
       </div>
 
+      <Box sx={{ display: 'flex' }}>
+        <FormControl
+          component="fieldset"
+          sx={{ m: 3, display: 'flex' }}
+          variant="standard"
+        >
+          <FormGroup>
+            <FormLabel component="legend">Stage Of the case</FormLabel>
+            <FormControlLabel
+              control={<Checkbox checked={formData.caseStage.CLOSED} onChange={handleChange} name="caseStage.CLOSED" />}
+              label="Closed"
+            />
+            <FormControlLabel
+              control={<Checkbox checked={formData.caseStage.FIR} onChange={handleChange} name="caseStage.FIR" />}
+              label="FIR"
+            />
+            <FormControlLabel
+              control={<Checkbox checked={formData.caseStage.PENDING} onChange={handleChange} name="caseStage.PENDING" />}
+              label="Pending"
+            />
+          </FormGroup>
+        </FormControl>
+        <FormControl
+          component="fieldset"
+          sx={{ m: 3 }}
+          variant="standard"
+        >
+          <FormGroup>
+            <FormLabel component="legend">Severity Of the case</FormLabel>
+            <FormControlLabel
+              control={<Checkbox checked={formData.caseSeverity.LOW} onChange={handleChange} name="caseSeverity.LOW" />}
+              label="Low"
+            />
+            <FormControlLabel
+              control={<Checkbox checked={formData.caseSeverity.HIGH} onChange={handleChange} name="caseSeverity.HIGH" />}
+              label="High"
+            />
+            <FormControlLabel
+              control={<Checkbox checked={formData.caseSeverity.MEDIUM} onChange={handleChange} name="caseSeverity.MEDIUM" />}
+              label="Medium"
+            />
+          </FormGroup>
+        </FormControl>
+      </Box>
 
-    <Box sx={{ display: 'flex' }} >
- 
-      <FormControl 
-  
-        component="fieldset"
-        sx={{ m: 3, display: 'flex' } }
-        variant="standard"
-      >
-       
-        <FormGroup >
-        <FormLabel component="legend" >Stage Of the case</FormLabel>
-          <FormControlLabel sx={{ display: 'flex' }} 
-            control={
-              <Checkbox checked={Closed} onChange={handleChange} name="Closed" />
-            }
-            label="Closed"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={FIR} onChange={handleChange} name="FIR" />
-            }
-            label="FIR"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={Pending} onChange={handleChange} name="Pending" />
-            }
-            label="Pending"
-          />
-        </FormGroup>
-      </FormControl>
-      <FormControl
-  
-        component="fieldset"
-        sx={{ m: 3 }}
-        variant="standard"
-      >
-       
-        <FormGroup>
-        <FormLabel component="legend">Severity Of the case</FormLabel>
-          <FormControlLabel
-            control={
-              <Checkbox checked={Low} onChange={handleChange} name="Low" />
-            }
-            label="Low"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={High} onChange={handleChange} name="High" />
-            }
-            label="High"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={Medium} onChange={handleChange} name="Medium" />
-            }
-            label="Medium"
-          />
-        </FormGroup>
-      </FormControl>
-    </Box>
-
-  
-      <div>  
-      <TextField
-          id="outlined-multiline-flexible"
-          label="First Hearing Date"
-          multiline
-          maxRows={2}
-        />
-        <TextField
-          id="outlined-textarea"
-          label="Next Hearing Date"
-          multiline
-        />
-       
-      </div>
-      <div >
-      <TextField
-          id="outlined-multiline-flexible"
-          label="Add comments"
-          multiline
-          maxRows={2}
-        />
-
-      </div>
       <div>
-      <TextField  
-    
-          id="outlined-multiline-flexible"
-          label="Add Case Description"
-          multiline
+        {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DemoContainer components={['DatePicker']}>
+            <DatePicker
+              label="First Hearing Date"
+              name="firstHearingDate"
+              value={formData.firstHearingDate}
+              onChange={(date) => handleDateChange('firstHearingDate', date)}
+            />
+          </DemoContainer>
+        </LocalizationProvider>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DemoContainer components={['DatePicker']}>
+            <DatePicker
+              label="Next Hearing Date"
+              name="nextHearingDate"
+              value={formData.nextHearingDate}
+              onChange={(date) => handleDateChange('nextHearingDate', date)}
+            />
+          </DemoContainer>
+        </LocalizationProvider> */}
+      </div>
+
+      <div>
+        <TextField
+          id="comments"
+          label="Add comments"
+          value={formData.comments || ''}
+          onChange={handleChange}
+          name="comments"
           maxRows={2}
-  
-        />    
-        <Button  variant="contained"  component={Link} to = "/Ufir" style={{ backgroundColor:"#141963" ,textAlign:"center",marginTop:"84px" }} >
-        Next Page
-       </Button>
+        />
+        <TextField
+          id="caseDescription"
+          label="Add Case Description"
+          value={formData.caseDescription || ''}
+          onChange={handleChange}
+          name="caseDescription"
+          maxRows={2}
+        />
+      </div>
 
-
-
+      <div>
+        <Button
+          variant="contained"
+          component={Link}
+          to="/ufir"
+          state={{
+            formData: {
+              ...formData,
+              caseStage: Object.keys(formData.caseStage).find((key) => formData.caseStage[key]),
+              caseSeverity: Object.keys(formData.caseSeverity).find((key) => formData.caseSeverity[key]),
+            },
+          }}
+          style={{ backgroundColor: '#141963', textAlign: 'center', marginTop: '24px' }}
+          onClick={handleSubmit}
+        >
+          Next Page
+        </Button>
       </div>
     </Box>
-    
   );
-
 };
 
 export default Form;
-

@@ -5,127 +5,162 @@ import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useEffect, useState } from 'react';
+import Cookies from 'universal-cookie';
 import FileOpenIcon from '@mui/icons-material/FileOpen';
 
-const columns = [
-  {
-    name: "no",
-    label: "CASE",
-    options: {
-     filter: true,
-     sort: true,
-    }
-   },
- {
-  name: "name",
-  label: "CLIENT NAME",
-  options: {
-   filter: true,
-   sort: true,
-  }
- },
- {
-  name: "description",
-  label: "CASE DESCRIPTION",
-  options: {
-   filter: true,
-   sort: false,
-  }
- },
- {
-  name: "respondant",
-  label: "RESPONDANT NAME",
-  options: {
-   filter: true,
-   sort: false,
-  }
- },
- {
-  name: "date",
-  label: "HEARING DATE",
-  options: {
-   filter: true,
-   sort: false,
-  }
- },
- {
-  name: "comments",
-  label: "COMMENTS",
-  options: {
-   filter: true,
-   sort: false,
-  }
- },
- {
-  name: 'Status',
-  label: "CASE STATUS",
-  options: {
-   filter: true,
-   sort: false,
-  }
- },
- {
-  name: 'actions',
-  label: "ACTIONS",
-  options: {
-    filter: false,
-    sort: false,
-    customBodyRenderLite: () => (
 
-    <Stack direction="row" alignItems="center" spacing={1}>
-      <IconButton aria-label="delete" size="large">
-        <DeleteIcon fontSize="inherit" />
-      </IconButton>
-      <IconButton aria-label="FileOpen" size="large">
-        <FileOpenIcon fontSize="inherit" />
-      </IconButton>
-      <Button variant="contained" color="success">
-        View
-      </Button>
-    </Stack>
-  
-    )
-  },
-  
- },
- 
-];
 
-const data = [
- { no:"1",name: "Pooja Shetty", description: "Test Corp", respondant: "adv.abc", date: "3/1/202",comments:"hiring is on 3/1/2024",Status:" Inactive" },
- { no:"2",name: "Ram Sharma", description: "Test Desc", respondant: "adv.pqr", date: "27/7/2024",comments:"hiring is on 27/7/2024",Status:"Open " },
- 
-];
+
 
 const options = {
   filterType: 'checkbox',
 };
-
+const cookies = new Cookies();
 const Case = () => {
+  const [caseState, setCaseState] = useState([]);
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/v1/case', {
+      method: 'GET',
+      headers: {
+        'token': cookies.get('token'),
+      }
+    }).then((res) => {
+      return (res.json())
+    }).then((data) => {
+      console.log(data);
+      setCaseState(data);
+    });
+  }, []);
 
-  const handleNextPage = () => {
-    history.push('/fir'); // Replace '/next-page' with your desired route
-  };
+  const handleDelete = (_id) => {
+    // const data = new FormData(event.currentTarget);
+    fetch(`http://127.0.0.1:8000/api/v1/case/${_id}`, {
+      method: 'DELETE',
+      headers: {
+        'token': cookies.get('token'),
+      },
+    }).then((data) => {
+      console.log(data)
+    });
+    
+  }
+
+  const data = caseState;
+
+
+  const columns = [
+    {
+      name: "caseNumber",
+      label: "CASE",
+      options: {
+        filter: true,
+        sort: true,
+      }
+    },
+    {
+      name: "clientName",
+      label: "CLIENT NAME",
+      options: {
+        filter: true,
+        sort: true,
+      }
+    },
+    {
+      name: "caseDescription",
+      label: "CASE DESCRIPTION",
+      options: {
+        filter: true,
+        sort: false,
+      }
+    },
+    {
+      name: "respondentName",
+      label: "RESPONDANT NAME",
+      options: {
+        filter: true,
+        sort: false,
+      }
+    },
+    {
+      name: "firstHearingDate",
+      label: "HEARING DATE",
+      options: {
+        filter: true,
+        sort: false,
+      }
+    },
+    {
+      name: "comments",
+      label: "COMMENTS",
+      options: {
+        filter: true,
+        sort: false,
+      }
+    },
+    {
+      name: 'caseStatus',
+      label: "CASE STATUS",
+      options: {
+        filter: true,
+        sort: false,
+      }
+    },
+    {
+      name: 'actions',
+      label: "ACTIONS",
+      options: {
+        filter: false,
+        sort: false,
+        customBodyRenderLite: (rowData) => (
+
+          <Stack direction="row" alignItems="center" spacing={1}>
+            <IconButton aria-label="delete" size="large" onClick={() => handleDelete(caseState[rowData]._id)}>
+              <DeleteIcon fontSize="inherit"  />
+            </IconButton>
+            <IconButton aria-label="FileOpen" size="large">
+              <FileOpenIcon fontSize="inherit" />
+            </IconButton>
+            <Button
+              variant="contained"
+              component={Link}
+              to='/edit' 
+              state={{
+                _id: caseState[rowData]._id,
+              }}
+              color="success"
+            >
+              View
+            </Button>
+          </Stack>
+
+        )
+      },
+
+    },
+
+  ];
+  
   return (
     <>
-<MUIDataTable
-  title={"CASES"} 
-  data={data}
-  columns={columns}
-  options={options}
-/> 
-<div style={{ textAlign: 'center', marginTop: '20px'}}>
+      <MUIDataTable
+        title={"CASES"}
+        data={data}
+        columns={columns}
+        options={options}
+      />
+      <div style={{ textAlign: 'center', marginTop: '20px' }}>
 
         <Stack spacing={2} direction="row">
-        <Button variant="contained" component={Link} to = "/Case"  onClick={handleNextPage} style={{ backgroundColor:"#141963" }}>
-          ALL CASES
-        </Button>
-        <Button variant="contained" component={Link} to = "/documents"  onClick={handleNextPage} style={{ backgroundColor:"#141963" }}>
-          ALL DOCUMENTS
-        </Button>
+          <Button variant="contained" component={Link} to="/Case" style={{ backgroundColor: "#141963" }}>
+            ALL CASES
+          </Button>
+          <Button variant="contained" component={Link} to="/documents" style={{ backgroundColor: "#141963" }}>
+            ALL DOCUMENTS
+          </Button>
         </Stack>
       </div>
     </>
   );
 };
-  export default Case;
+export default Case;
